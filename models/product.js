@@ -9,7 +9,10 @@ const productSchema = new Schema({
   },
   number: { type: String },
 
-  quantity: { type: Number, require: "Set quantity products" },
+  quantity: {
+    type: Number,
+    require: [true, "Set quantity products"],
+  },
 
   material: {
     thickness: {
