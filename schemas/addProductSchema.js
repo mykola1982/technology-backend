@@ -4,8 +4,9 @@ const addProductShema = Joi.object().keys({
   name: Joi.string().required(),
   number: Joi.string(),
   quantity: Joi.number().required(),
+  workshop: Joi.string().required(),
   material: Joi.object({
-    material: Joi.string().required(),
+    thickness: Joi.string().required(),
     sheet: Joi.string().required(),
   }).required(),
 });
