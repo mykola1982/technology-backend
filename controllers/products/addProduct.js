@@ -12,16 +12,11 @@ const addProduct = async (req, res, next) => {
   const newProduct = await Product.create({ ...req.body });
 
   res.status(201).json({
-    status: "succes",
+    status: "success",
     code: 201,
     data: { product: newProduct },
     message: "Create succesfull",
   });
 };
 
-// зробити перевырку на наявнысть такого продукту з таким децимальним номером
-// прибрати версыю
-// додати час створення
-// додати час оновлення
-// додати дільницю в модель
 module.exports = addProduct;
