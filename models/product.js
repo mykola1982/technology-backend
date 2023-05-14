@@ -9,17 +9,18 @@ const productSchema = new Schema(
       require: [true, "Set name for product"],
     },
     number: { type: String },
-
     workshop: {
       type: String,
       require: [true, "Set workshop for product"],
     },
-
+    weight: {
+      type: Number,
+      require: [true, "Set weight for product"],
+    },
     quantity: {
       type: Number,
       require: [true, "Set quantity products"],
     },
-
     material: {
       thickness: {
         type: String,
