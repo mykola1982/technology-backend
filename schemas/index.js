@@ -1,3 +1,4 @@
 const addProductSchema = require("./addProductSchema");
+const addOrderSchema = require("./addOrderSchema");
 
-module.exports = { addProductSchema };
+module.exports = { addProductSchema, addOrderSchema };
