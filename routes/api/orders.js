@@ -8,11 +8,7 @@ const { addOrderSchema } = require("../../schemas");
 
 // router.get("/");
 // router.get("/:id", isValidId);
-router.post(
-  "/",
-  // validateBody(addOrderSchema),
-  ctrl.addOrder
-);
+router.post("/", validateBody(addOrderSchema), ctrl.addOrder);
 // router.delete("/:id", isValidId);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-const addProductSсhema = Joi.object().keys({
+const addProductShema = Joi.object().keys({
   name: Joi.string().required(),
   number: Joi.string(),
   quantity: Joi.number().required(),
@@ -12,4 +12,4 @@ const addProductSсhema = Joi.object().keys({
   }).required(),
 });
 
-module.exports = addProductSсhema;
+module.exports = addProductShema;
