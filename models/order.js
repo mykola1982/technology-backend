@@ -12,10 +12,11 @@ const orderShema = new Schema(
           required: [true, "Set name for product"],
         },
         number: { type: String },
-        workshop: {
-          type: String,
-          required: [true, "Set workshop for product"],
+        reserved: {
+          type: Number,
+          reguired: [true, "Set reserved for product"],
         },
+
         weight: {
           type: Number,
           required: [true, "Set weight for product"],

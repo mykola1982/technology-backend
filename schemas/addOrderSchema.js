@@ -8,7 +8,7 @@ const addOrderSchema = Joi.object().keys({
         number: Joi.string(),
         quantity: Joi.number().required(),
         weight: Joi.number().required(),
-        workshop: Joi.string().required(),
+        reserved: Joi.number().required(),
         material: Joi.object({
           thickness: Joi.string().required(),
           sheet: Joi.string().required(),
