@@ -37,6 +37,13 @@ const orderShema = new Schema(
         },
       },
     ],
+    materials: [
+      {
+        thickness: { type: String, required: true },
+        sheet: { type: String, required: true },
+        amount: { type: Number, reguired: true },
+      },
+    ],
   },
   { versionKey: false, timestamps: true }
 );

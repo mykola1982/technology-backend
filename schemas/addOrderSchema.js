@@ -16,6 +16,13 @@ const addOrderSchema = Joi.object().keys({
       })
     )
     .required(),
+  materials: Joi.array().items(
+    Joi.object().keys({
+      thickness: Joi.string().required(),
+      sheet: Joi.string().required(),
+      amount: Joi.number().required(),
+    })
+  ),
 });
 
 module.exports = addOrderSchema;
