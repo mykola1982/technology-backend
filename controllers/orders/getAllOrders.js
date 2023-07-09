@@ -1,6 +1,6 @@
 const { Order } = require("../../models");
 
-const getAllOrders = async (reg, res, next) => {
+const getAllOrders = async (req, res, next) => {
   const orders = await Order.find();
 
   res.status(200).json({

@@ -1,7 +1,7 @@
 const { Order } = require("../../models");
 
-const addOrder = async (reg, res, next) => {
-  const newOrder = await Order.create({ ...reg.body });
+const addOrder = async (req, res, next) => {
+  const newOrder = await Order.create({ ...req.body });
 
   res.status(201).json({
     status: "success",
