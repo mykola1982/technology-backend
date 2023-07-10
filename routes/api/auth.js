@@ -4,13 +4,11 @@ const router = express.Router();
 
 const { controllersAuth: ctrl } = require("../../controllers");
 const { auth, validateBody } = require("../../middelwares");
-const { userLoginSchema, userRegisterSchema } = require("../../schemas");
+const { userRegisterSchema, userLoginSchema } = require("../../schemas");
 
 router.post("/signup", validateBody(userRegisterSchema), ctrl.signup);
-router.post("/login");
-router.get("/current");
-router.get("/logout");
-router.patch("/edit");
-router.delete("/delete");
+router.post("/login", validateBody(userLoginSchema), ctrl.login);
+router.get("/current", auth, ctrl.getCurrentUser);
+router.get("/logout", auth, ctrl.logout);
 
 module.exports = router;
