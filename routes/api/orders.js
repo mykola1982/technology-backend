@@ -1,14 +1,16 @@
 const express = require("express");
 
+const { auth } = require("../../middelwares");
+
 const router = express.Router();
 
 const { controllersOrders: ctrl } = require("../../controllers");
 const { validateBody, isValidId } = require("../../middelwares");
 const { addOrderSchema } = require("../../schemas");
 
-router.get("/", ctrl.getAllOrder);
-router.get("/:id", isValidId, ctrl.getByIdOrder);
-router.post("/", validateBody(addOrderSchema), ctrl.addOrder);
-router.delete("/:id", isValidId, ctrl.deleteByIdOrder);
+router.get("/", auth, ctrl.getAllOrder);
+router.get("/:id", auth, isValidId, ctrl.getByIdOrder);
+router.post("/", auth, validateBody(addOrderSchema), ctrl.addOrder);
+router.delete("/:id", auth, isValidId, ctrl.deleteByIdOrder);
 
 module.exports = router;
