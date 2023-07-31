@@ -1,9 +1,9 @@
-const { userRegisterSchema, userLoginSchema } = require("./userShemas");
+const { userAddSchema, userLoginSchema } = require("./userShemas");
 const addProductSchema = require("./addProductSchema");
 const addOrderSchema = require("./addOrderSchema");
 
 module.exports = {
-  userRegisterSchema,
+  userAddSchema,
   userLoginSchema,
   addProductSchema,
   addOrderSchema,
