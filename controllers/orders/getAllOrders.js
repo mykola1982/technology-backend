@@ -6,7 +6,7 @@ const getAllOrders = async (req, res, next) => {
   res.status(200).json({
     status: "success",
     code: 200,
-    data: { orders },
+    data: orders,
     total: orders.length,
   });
 };
