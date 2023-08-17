@@ -4,6 +4,7 @@ const { MongooseError } = require("../helpers");
 
 const orderShema = new Schema(
   {
+    user: { type: String, required: [true, "Set name for product"] },
     products: [
       {
         _id: false,

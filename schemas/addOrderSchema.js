@@ -1,6 +1,7 @@
 const Joi = require("joi");
 
 const addOrderSchema = Joi.object().keys({
+  user: Joi.string().required(),
   products: Joi.array()
     .items(
       Joi.object().keys({
