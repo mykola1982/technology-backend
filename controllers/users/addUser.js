@@ -14,12 +14,12 @@ const addUser = async (req, res, next) => {
 
   const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
-  await User.create({ name, password: hashPassword, role });
+  const { _id } = await User.create({ name, password: hashPassword, role });
 
   res.status(201).json({
     status: "succes",
     code: 201,
-    data: { id: User._id, user: { name } },
+    data: { user: { _id, name } },
   });
 };
 
