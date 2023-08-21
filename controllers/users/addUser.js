@@ -19,7 +19,7 @@ const addUser = async (req, res, next) => {
   res.status(201).json({
     status: "succes",
     code: 201,
-    data: { user: { name } },
+    data: { id: User._id, user: { name } },
   });
 };
 
