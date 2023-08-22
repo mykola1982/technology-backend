@@ -45,6 +45,7 @@ const orderShema = new Schema(
         amount: { type: Number, reguired: true },
       },
     ],
+    toRemove: { type: Boolean, default: false },
   },
   { versionKey: false, timestamps: true }
 );
