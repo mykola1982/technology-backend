@@ -20,7 +20,7 @@ const updateToRemoveOrder = async (req, res) => {
     code: 200,
     data: {
       id,
-      toRemove,
+      toRemove: !toRemove,
     },
     massege: "Success update order",
   });
