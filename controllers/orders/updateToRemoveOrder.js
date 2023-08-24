@@ -3,18 +3,25 @@ const { Order } = require("../../models");
 
 const updateToRemoveOrder = async (req, res) => {
   const { id } = req.params;
-  const result = await Order.findByIdAndUpdate(id, req.body, {
-    new: true,
-  });
 
-  if (!result) {
+  const order = await Order.findById(id);
+  if (!order) {
     throw HttpError(404, "Not found");
   }
 
+  const { toRemove } = order;
+
+  order.toRemove = !toRemove;
+  await order.save();
+
+  console.log(order.toRemove);
   res.status(200).json({
     status: "success",
     code: 200,
-    id,
+    data: {
+      id,
+      toRemove,
+    },
     massege: "Success update order",
   });
 };
