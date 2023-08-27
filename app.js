@@ -8,6 +8,7 @@ const {
   usersRouter,
   productsRouter,
   ordersRouters,
+  materialsRouters,
 } = require("./routes/api");
 
 const app = express();
@@ -23,6 +24,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/orders", ordersRouters);
+app.use("/api/materials", materialsRouters);
 
 app.use((error, req, res, next) => {
   if (HttpError) {

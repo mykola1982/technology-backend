@@ -1,11 +1,9 @@
 const express = require("express");
 
-const { auth } = require("../../middelwares");
-
 const router = express.Router();
 
 const { controllersProducts: ctrl } = require("../../controllers");
-const { validateBody, isValidId } = require("../../middelwares");
+const { auth, validateBody, isValidId } = require("../../middelwares");
 const { addProductSchema } = require("../../schemas");
 
 router.get("/", auth, ctrl.getAllProduct);
