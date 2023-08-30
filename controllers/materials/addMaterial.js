@@ -2,14 +2,21 @@ const { Material } = require("../../models");
 const { HttpError } = require("../../helpers");
 
 const addMaterial = async (req, res, next) => {
-  const { brand, sheetParameters, rodParameters, weight } = req.body;
+  const { type, brand, sheetParameters, rodParameters, weight } = req.body;
 
-  let material;
+  const query = {
+    type,
+    brand,
+    weight,
+  };
+
   if (sheetParameters) {
-    material = await Material.findOne({ brand, sheetParameters, weight });
+    query.sheetParameters = sheetParameters;
   } else if (rodParameters) {
-    material = await Material.findOne({ brand, rodParameters, weight });
+    query.rodParameters = rodParameters;
   }
+
+  const material = await Material.findOne(query);
 
   if (material) {
     throw HttpError(409, "Material with such data is already in the database ");

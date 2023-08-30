@@ -7,8 +7,18 @@ const addMaterialSchema = Joi.object().keys({
     width: Joi.string(),
     length: Joi.string(),
     thickness: Joi.string(),
+  }).when(Joi.ref("type"), {
+    is: "sheet",
+    then: Joi.required(),
+    otherwise: Joi.forbidden(),
   }),
-  rodParameters: Joi.object({ diameter: Joi.string() }),
+  rodParameters: Joi.object({
+    diameter: Joi.string(),
+  }).when(Joi.ref("type"), {
+    is: "rod",
+    then: Joi.required(),
+    otherwise: Joi.forbidden(),
+  }),
   weight: Joi.number().required(),
 });
 

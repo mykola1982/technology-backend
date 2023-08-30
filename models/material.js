@@ -27,6 +27,32 @@ const materialSchema = new Schema(
   { versionKey: false, timestamps: true }
 );
 
+function getRequiredFields(type) {
+  if (type === "sheet") {
+    return [
+      "sheetParameters.width",
+      "sheetParameters.length",
+      "sheetParameters.thickness",
+    ];
+  } else if (type === "rod") {
+    return ["rodParameters.diameter"];
+  }
+  return [];
+}
+
+materialSchema.pre("validate", function (next) {
+  const requiredFields = getRequiredFields(this.type);
+  for (const field of requiredFields) {
+    const fieldValue = field
+      .split(".")
+      .reduce((obj, key) => (obj && obj[key]) || null, this);
+    if (!fieldValue) {
+      this.invalidate(field, "Field is required", this[field]);
+    }
+  }
+  next();
+});
+
 materialSchema.post("save", MongooseError);
 
 const Material = model("material", materialSchema);
