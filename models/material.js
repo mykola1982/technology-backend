@@ -14,15 +14,20 @@ const materialSchema = new Schema(
       required: [true, "Set brand for material"],
     },
     sheetParameters: {
-      width: { type: String },
-      length: { type: String },
-      thickness: { type: String },
+      width: { type: Number, min: 0, exclusiveMin: true },
+      length: { type: Number, min: 0, exclusiveMin: true },
+      thickness: { type: Number, min: 0, exclusiveMin: true },
     },
     rodParameters: {
-      diameter: { type: String },
+      diameter: { type: Number, min: 0, exclusiveMin: true },
     },
 
-    weight: { type: Number, required: [true, "Set weigth for material"] },
+    weight: {
+      type: Number,
+      in: 0,
+      exclusiveMin: true,
+      required: [true, "Set weigth for material"],
+    },
   },
   { versionKey: false, timestamps: true }
 );
