@@ -6,7 +6,7 @@ const addOrder = async (req, res, next) => {
   res.status(201).json({
     status: "success",
     code: 201,
-    data: { order: newOrder },
+    data: newOrder,
     message: "Create succesfull",
   });
 };

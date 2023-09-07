@@ -14,7 +14,7 @@ const addProduct = async (req, res, next) => {
   res.status(201).json({
     status: "success",
     code: 201,
-    data: { product: newProduct },
+    data: newProduct,
     message: "Create succesfull",
   });
 };
