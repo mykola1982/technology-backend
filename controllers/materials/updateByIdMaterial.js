@@ -27,10 +27,12 @@ const updateByIdMaterial = async (req, res, next) => {
     updateFields.sheetParameters = null;
   }
 
-  console.log(updateFields);
   const materialWithUpdatedData = await Material.findOne(updateFields);
 
-  if (materialWithUpdatedData) {
+  if (
+    materialWithUpdatedData &&
+    materialWithUpdatedData._id.toString() !== id
+  ) {
     throw HttpError(409, "Material with such data is already in the database ");
   }
 
