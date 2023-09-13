@@ -27,16 +27,6 @@ const productSchema = new Schema(
       ref: "materials",
       require: [true, "Set material for product"],
     },
-    // material: {
-    //   thickness: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   sheet: {
-    //     type: String,
-    //     required: true,
-    //   },
-    // },
   },
   { versionKey: false, timestamps: true }
 );
