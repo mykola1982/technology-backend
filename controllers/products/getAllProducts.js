@@ -1,7 +1,10 @@
-const { Product } = require("../../models");
+const { Product, Material } = require("../../models");
 
 const getAllProducts = async (req, res, next) => {
-  const products = await Product.find();
+  const products = await Product.find().populate({
+    path: "material",
+    model: Material,
+  });
 
   res.status(200).json({
     status: "success",
