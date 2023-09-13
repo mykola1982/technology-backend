@@ -6,10 +6,10 @@ const addProductSchema = Joi.object().keys({
   quantity: Joi.number().required(),
   weight: Joi.number().required(),
   workshop: Joi.string().required(),
-  material: Joi.object({
-    thickness: Joi.string().required(),
-    sheet: Joi.string().required(),
-  }).required(),
+  // material: Joi.object({
+  //   thickness: Joi.string().required(),
+  //   sheet: Joi.string().required(),
+  // }).required(),
 });
 
 module.exports = addProductSchema;

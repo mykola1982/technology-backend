@@ -19,18 +19,24 @@ const productSchema = new Schema(
     },
     quantity: {
       type: Number,
-      required: [true, "Set quantity products"],
+      required: [true, "Set quantity for products"],
     },
+
     material: {
-      thickness: {
-        type: String,
-        required: true,
-      },
-      sheet: {
-        type: String,
-        required: true,
-      },
+      type: Schema.Types.ObjectId,
+      ref: "materials",
+      require: [true, "Set material for product"],
     },
+    // material: {
+    //   thickness: {
+    //     type: String,
+    //     required: true,
+    //   },
+    //   sheet: {
+    //     type: String,
+    //     required: true,
+    //   },
+    // },
   },
   { versionKey: false, timestamps: true }
 );
