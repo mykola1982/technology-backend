@@ -18,9 +18,7 @@ const addProduct = async (req, res, next) => {
   const newProduct = await Product.create({
     ...req.body,
     material: existingMaterial,
-  });
-
-  console.log("newProduct", newProduct);
+  }).populate({ path: "material", model: Material });
 
   res.status(201).json({
     status: "success",
