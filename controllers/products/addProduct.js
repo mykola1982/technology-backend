@@ -14,11 +14,13 @@ const addProduct = async (req, res, next) => {
   if (!existingMaterial) {
     throw HttpError(404, `Material with id: ${material} was not found`);
   }
+  console.log(existingMaterial);
 
   const newProduct = await Product.create({
     ...req.body,
-    // material: existingMaterial,
-  }).populate({ path: "material", model: Material });
+    material: existingMaterial,
+  });
+  console.log(newProduct);
 
   res.status(201).json({
     status: "success",
