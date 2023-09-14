@@ -24,7 +24,10 @@ const updateByIdProduct = async (req, res, next) => {
     {
       new: true,
     }
-  );
+  ).populate({
+    path: "material",
+    model: Material,
+  });
 
   if (!updatedProduct) {
     throw HttpError(404, `Product with id:${id} was not found `);
