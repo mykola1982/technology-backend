@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const { MongooseError } = require("../helpers");
+const { getRequiredFields } = require("../utils");
 
 const materialSchema = new Schema(
   {
@@ -32,18 +33,18 @@ const materialSchema = new Schema(
   { versionKey: false, timestamps: true }
 );
 
-function getRequiredFields(type) {
-  if (type === "sheet") {
-    return [
-      "sheetParameters.width",
-      "sheetParameters.length",
-      "sheetParameters.thickness",
-    ];
-  } else if (type === "rod") {
-    return ["rodParameters.diameter"];
-  }
-  return [];
-}
+// function getRequiredFields(type) {
+//   if (type === "sheet") {
+//     return [
+//       "sheetParameters.width",
+//       "sheetParameters.length",
+//       "sheetParameters.thickness",
+//     ];
+//   } else if (type === "rod") {
+//     return ["rodParameters.diameter"];
+//   }
+//   return [];
+// }
 
 materialSchema.pre("validate", function (next) {
   const requiredFields = getRequiredFields(this.type);

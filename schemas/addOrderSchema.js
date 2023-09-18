@@ -7,20 +7,31 @@ const addOrderSchema = Joi.object().keys({
       Joi.object().keys({
         name: Joi.string().required(),
         number: Joi.string(),
-        quantity: Joi.number().required(),
-        weight: Joi.number().required(),
         reserved: Joi.number().required(),
-        material: Joi.object({
-          thickness: Joi.string().required(),
-          sheet: Joi.string().required(),
-        }).required(),
       })
     )
     .required(),
   materials: Joi.array().items(
     Joi.object().keys({
-      thickness: Joi.string().required(),
-      sheet: Joi.string().required(),
+      type: Joi.string().valid("sheet", "rod").required(),
+      brand: Joi.string().required(),
+      sheetParameters: Joi.object({
+        width: Joi.number().greater(0).not(0),
+        length: Joi.number().greater(0).not(0),
+        thickness: Joi.number().greater(0).not(0),
+      }).when(Joi.ref("type"), {
+        is: "sheet",
+        then: Joi.required(),
+        otherwise: Joi.forbidden(),
+      }),
+      rodParameters: Joi.object({
+        diameter: Joi.number().greater(0).not(0),
+      }).when(Joi.ref("type"), {
+        is: "rod",
+        then: Joi.required(),
+        otherwise: Joi.forbidden(),
+      }),
+      weight: Joi.number().required().greater(0).not(0),
       amount: Joi.number().required(),
     })
   ),
