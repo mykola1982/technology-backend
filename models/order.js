@@ -41,11 +41,11 @@ const orderShema = new Schema(
 
         weight: {
           type: Number,
-          in: 0,
+          min: 0,
           exclusiveMin: true,
           required: [true, "Set weigth for material"],
         },
-        amount: { type: Number, reguired: [true, "Set amountfor material"] },
+        amount: { type: Number, reguired: [true, "Set amount for material"] },
       },
     ],
     toRemove: { type: Boolean, default: false },
